@@ -1,0 +1,105 @@
+                          <!--pnlNPTUnscheduled-->
+                            <asp:Panel ID="pnlNPTUnscheduled" runat="server" CssClass="pnlgrdResults_Notebook" ScrollBars="Auto">
+                                <asp:GridView ID="grdNPTUnscheduled" runat="server" AutoGenerateColumns="false" DataKeyNames="NPTID" RowStyle-Font-Size="8pt" HeaderStyle-Font-Size="10pt" HeaderStyle-BackColor="Linen" CellPadding="2" CellSpacing="1" HeaderStyle-CssClass="Freezing" Width="100%" OnRowEditing="grdNPTUnscheduled_RowEditing" HeaderStyle-VerticalAlign="Top" RowStyle-VerticalAlign="Top" BackColor="White" CssClass="gridTable" Caption="<font class='grdCaption'>Unscheduled NPT for CURRENT or PREVIOUS Weeks</font>">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="8pt" ItemStyle-VerticalAlign="Middle" ItemStyle-Wrap="true" ItemStyle-Width="30px" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeLeft">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgbtnEditSch" runat="server" ImageUrl="../images/Icons/edit_pencil_large.png" Height="18px" CssClass="gridIcons" OnClick="EditNPTUnsched_Click" RowIndex='<%# Container.DataItem("NPTID")%>' ToolTip="Click to update this item" CommandName="Edit" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="EmplName" HeaderText="Employee" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" ItemStyle-Width="30px" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeRight" />
+                                        <asp:BoundField DataField="StartDate" HeaderText="Start Date" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" DataFormatString="{0:MM/dd/yyyy}" />
+                                        <asp:BoundField DataField="EndDate" HeaderText="End Date" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" DataFormatString="{0:MM/dd/yyyy}" />
+                                        <asp:BoundField DataField="Hours" HeaderText="Hours" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" />
+                                        <asp:BoundField DataField="RsrcCode" HeaderText="Resource Code" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="true" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeRight" />
+                                        <asp:BoundField DataField="Reason" HeaderText="Reason" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="true" />
+
+                                    </Columns>
+                                    <AlternatingRowStyle />
+                                </asp:GridView>
+                                <asp:Label ID="Label1" runat="server" Text="" Font-Bold="true" Font-Size="12pt"></asp:Label>
+                            </asp:Panel>
+
+                            <!--pnlNPTScheduled-->
+                            <asp:Panel ID="pnlNPTScheduled" runat="server" CssClass="pnlgrdResults_Notebook" ScrollBars="Auto">
+                                <asp:GridView ID="grdNPTScheduled" runat="server" AutoGenerateColumns="false" DataKeyNames="NPTID" RowStyle-Font-Size="8pt" HeaderStyle-Font-Size="10pt" HeaderStyle-BackColor="Linen" CellPadding="2" CellSpacing="1" HeaderStyle-CssClass="Freezing" Width="100%" OnRowEditing="grdNPTScheduled_RowEditing" HeaderStyle-VerticalAlign="Top" RowStyle-VerticalAlign="Top" BackColor="White" CssClass="gridTable" Caption="<font class='grdCaption'>Scheduled NPT for FUTURE Weeks</font>">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="8pt" ItemStyle-VerticalAlign="Middle" ItemStyle-Wrap="true" ItemStyle-Width="30px" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeLeft">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgbtnEditSch" runat="server" ImageUrl="../images/Icons/edit_pencil_large.png" Height="18px" CssClass="gridIcons" OnClick="EditNPTSched_Click" RowIndex='<%# Container.DataItem("NPTID")%>' ToolTip="Click to update this item" CommandName="Edit" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="EmplName" HeaderText="Employee" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" ItemStyle-Width="30px" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeRight" />
+                                        <asp:BoundField DataField="StartDate" HeaderText="Start Date" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" DataFormatString="{0:MM/dd/yyyy}" />
+                                        <asp:BoundField DataField="EndDate" HeaderText="End Date" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" DataFormatString="{0:MM/dd/yyyy}" />
+                                        <asp:BoundField DataField="Hours" HeaderText="Hours" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" />
+                                        <asp:BoundField DataField="RsrcCode" HeaderText="Resource Code" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="true" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeRight" />
+                                        <asp:BoundField DataField="Reason" HeaderText="Reason" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="true" />
+
+                                    </Columns>
+                                    <AlternatingRowStyle />
+                                </asp:GridView>
+                                <asp:Label ID="Label3" runat="server" Text="" Font-Bold="true" Font-Size="12pt"></asp:Label>
+                            </asp:Panel>
+
+                            <!--pnlRsrcPool-->
+                            <asp:Panel ID="pnlRsrcPool" runat="server" CssClass="pnlgrdResults_Notebook" ScrollBars="Auto">
+                                <asp:GridView ID="grdRsrcPool" runat="server" AutoGenerateColumns="false" DataKeyNames="RsrcID" RowStyle-Font-Size="8pt" HeaderStyle-Font-Size="10pt" HeaderStyle-BackColor="Linen" CellPadding="2" CellSpacing="1" HeaderStyle-CssClass="Freezing" Width="100%" OnRowEditing="grdRsrcPool_RowEditing" HeaderStyle-VerticalAlign="Top" RowStyle-VerticalAlign="Top" BackColor="White" CssClass="gridTable" Caption="<font class='grdCaption'>Resource Pool Size</font>">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="8pt" ItemStyle-VerticalAlign="Middle" ItemStyle-Wrap="true" ItemStyle-Width="30px" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeLeft">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgbtnEditRsrcPool" runat="server" ImageUrl="../images/Icons/edit_pencil_large.png" Height="18px" CssClass="gridIcons" OnClick="EditRsrcPool_Click" RowIndex='<%# Container.DataItem("RsrcID")%>' ToolTip="Click to update this item" CommandName="Edit" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="CraftCode" HeaderText="Craft Code" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" ItemStyle-Width="30px" HeaderStyle-CssClass="grdMergeRight" ItemStyle-CssClass="grdMergeRight" />
+                                        <asp:BoundField DataField="NormPoolSize" HeaderText="Normal Pool Size" ItemStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" />
+                                        <asp:BoundField DataField="ReqPoolSize" HeaderText="Requested Pool Size" ItemStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" />
+                                        <asp:BoundField DataField="StartDate" HeaderText="Start Date" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" DataFormatString="{0:MM/dd/yyyy}" />
+                                        <asp:BoundField DataField="EndDate" HeaderText="End Date" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="false" DataFormatString="{0:MM/dd/yyyy}" />
+                                        <asp:BoundField DataField="Reason" HeaderText="Reason" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Wrap="true" />
+
+                                    </Columns>
+                                    <AlternatingRowStyle />
+                                </asp:GridView>
+                                <asp:Label ID="Label4" runat="server" Text="" Font-Bold="true" Font-Size="12pt"></asp:Label>
+                            </asp:Panel>
+
+                <!--UpdatePanelEditNPT-->
+                <asp:UpdatePanel ID="UpdatePanelEditNPT" runat="server">
+                    <ContentTemplate>
+                        <asp:LinkButton ID="btnEditNPT" runat="server" Text="" CssClass="bttn invisible" />
+                        <!---pnlEditNPT--->
+                        <asp:Panel ID="pnlEditNPT" Width="680px" runat="server" HorizontalAlign="Center" CssClass="modalPopupTable">
+                        </asp:Panel>
+
+                        <!---modalEditNPT--->
+                        <ajaxToolkit:ModalPopupExtender ID="modalEditNPT" runat="server"
+                            TargetControlID="btnEditNPT" PopupControlID="pnlEditNPT"
+                            DropShadow="false" CancelControlID="lnkbtnEditNPTCancel"
+                            BackgroundCssClass="modalBackground">
+                        </ajaxToolkit:ModalPopupExtender>
+
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
+
+
+
+
+                <!--UpdatePanelEditRsrcPool-->
+                <asp:UpdatePanel ID="UpdatePanelEditRsrcPool" runat="server">
+                    <ContentTemplate>
+                        <asp:LinkButton ID="btnEditRsrcPool" runat="server" Text="" CssClass="bttn invisible" />
+                        <!---pnlEditRsrcPool--->
+                        <asp:Panel ID="pnlEditRsrcPool" Width="680px" runat="server" HorizontalAlign="Center" CssClass="modalPopupTable">
+                        </asp:Panel>
+                        <!---modalEditRsrcPool--->
+                        <ajaxToolkit:ModalPopupExtender ID="modalEditRsrcPool" runat="server"
+                            TargetControlID="btnEditRsrcPool" PopupControlID="pnlEditRsrcPool"
+                            DropShadow="false" CancelControlID="lnkbtnEditRsrcPoolCancel"
+                            BackgroundCssClass="modalBackground">
+                        </ajaxToolkit:ModalPopupExtender>
+
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
